@@ -1,0 +1,9 @@
+{
+    "config" : true,
+    "login": [
+        {
+            "mode": "login",
+            "loginMode": true
+        }
+    ]
+}
