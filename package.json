@@ -1,0 +1,63 @@
+{
+  "private": true,
+  "entry": "entry",
+  "config": {
+    "webpackOutputPublicPath": "./"
+  },
+  "template": "template.ejs",
+  "scripts": {
+    "analyze": "react-scripts analyze && source-map-explorer build/public/main.*.js build/public/main.*.js.map",
+    "build-test-app": "cp -f ../../../../../../private/test-app.private.html test-app.html",
+    "build": "react-scripts build && mv build/public/main* build/main.js",
+    "dev": "react-scripts dev",
+    "lint": "react-scripts lint",
+    "lint:fix": "react-scripts lint -- --fix",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "prettier": "prettier --trailing-comma all --single-quote --write",
+    "format": "yarn run prettier -- 'app/**/*.js' && yarn run lint:fix",
+    "precommit": "lint-staged",
+    "test:watch": "yarn run test -- --watch",
+    "testcafe": "testcafe 'chrome --incognito' app/testcafe/fixtures --skip-js-errors -S -s app/testcafe/screenshots"
+  },
+  "dependencies": {
+    "console-polyfill": "^0.2.3",
+    "core-js": "^2.4.1",
+    "custom-event-polyfill": "^0.3.0",
+    "material-ui": "next",
+    "moment": "^2.22.2",
+    "ramda": "^0.25.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-select": "^1.0.0-rc.4",
+    "recompose": "^0.25.0",
+    "redux": "^3.7.2",
+    "smoothscroll-polyfill": "^0.4.3",
+    "styled-components": "^2.0.0",
+    "styled-components-breakpoint": "^1.0.1",
+    "styled-tools": "^0.1.4",
+    "testcafe": "^0.17.2",
+    "url-loader": "^0.5.8",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "@amazee/react-scripts": "git+ssh://git@delphi.rotaryintl.org:7999/alatx/react-scripts.git#semver:^1.0.15",
+    "flow-bin": "^0.42.0",
+    "lint-staged": "^3.4.0",
+    "moment-timezone": "^0.5.21",
+    "prettier": "^1.5.3",
+    "source-map-explorer": "^1.5.0"
+  },
+  "lint-staged": {
+    "linters": {
+      "**/app/**/*.js": [
+        "lint:fix",
+        "git add"
+      ]
+    },
+    "gitDir": "../../../../../../"
+  },
+  "engines": {
+    "node": "^7.0.0 || ^8.0.0 || ^10.0.0"
+  }
+}
